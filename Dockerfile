@@ -6,6 +6,8 @@ ENV KEYPASSWD=Zydfhm2013
 
 ENV PATH=$PATH:/go/bin
 
+COPY ./app.toml /root/.gaia/config/app.toml
+
 RUN gaiad init stakematic --chain-id cosmoshub-4
 
 RUN (echo $KEYPASSWD; echo $KEYPASSWD) | gaiad keys add myval
@@ -17,5 +19,5 @@ RUN echo $KEYPASSWD | gaiad gentx myval 100000000stake --chain-id cosmoshub-4
  
 # Add the gentx to the genesis file.
 RUN gaiad collect-gentxs
- 
+
 CMD ["gaiad", "start"]
