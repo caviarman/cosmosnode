@@ -1,0 +1,16 @@
+apiVersion: v1
+data:
+  entrypoint.sh: "#!/usr/bin/env sh\n \nexport PATH=$PATH:/go/bin\n \ngaiad init stakematic
+    --chain-id cosmoshub-4\n \nwget https://github.com/cosmos/mainnet/raw/master/genesis.cosmoshub-4.json.gz\n
+    \ngzip -d genesis.cosmoshub-4.json.gz\n \nmv genesis.cosmoshub-4.json /home/.gaia/config/genesis.json\n
+    \n(echo $KEYPASSWD; echo $KEYPASSWD) | gaiad keys add myval\n \necho $KEYPASSWD
+    | gaiad add-genesis-account myval 100000000000stake\n \n# Create a gentx.\necho
+    $KEYPASSWD | gaiad gentx myval 100000000stake --chain-id cosmoshub-4\n \n# Add
+    the gentx to the genesis file.\ngaiad collect-gentxs\n \ngaiad start\n"
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2022-02-21T15:27:23Z"
+  name: my-config
+  namespace: default
+  resourceVersion: "571724"
+  uid: 3f305ce3-090a-4b2f-886e-a0ec125b28f4
