@@ -1,7 +1,9 @@
 #!/usr/bin/env sh
-initNode() {
-    export PATH=$PATH:/go/bin
-    
+
+ export PATH=$PATH:/go/bin
+
+function initNode() {
+       
     gaiad init stakematic --chain-id cosmoshub-4
     
     (echo $KEYPASSWD; echo $KEYPASSWD) | gaiad keys add myval
@@ -15,6 +17,12 @@ initNode() {
     gaiad collect-gentxs
 }
 
-initNode
- 
-gaiad start
+function start {
+    gaiad start
+}
+
+case $1 in
+    initNode) shift && initNode $@;;
+    start) shift && start $@;;
+    *) echo "Cannot find command" && exit 1;;
+esac
