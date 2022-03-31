@@ -1,14 +1,5 @@
 version: '3'
 services:
-  init:
-    command: initNode
-    build: .
-    volumes:
-      - ../config:/root/.gaia/
-      - ./app.toml:/root/.gaia/config/app.toml
-      - ./config.toml:/root/.gaia/config/config.toml
-      - ./genesis.json:/root/.gaia/config/genesis.json
-
   gaia:
     command: start
     build: .
@@ -17,3 +8,4 @@ services:
       - ./app.toml:/root/.gaia/config/app.toml
       - ./config.toml:/root/.gaia/config/config.toml
       - ./genesis.json:/root/.gaia/config/genesis.json
+      - ./addrbook.json:/root/.gaia/config/addrbook.json
