@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
- export PATH=$PATH:/go/bin
+export PATH=$PATH:/go/bin
 
-function initNode() {
+initNode() {
        
     gaiad init stakematic --chain-id cosmoshub-4
     
@@ -17,7 +17,7 @@ function initNode() {
     gaiad collect-gentxs
 }
 
-function start {
+start() {
     gaiad start
 }
 
