@@ -1,0 +1,17 @@
+version: '3'
+services:
+  init:
+    command: initNode
+    build: .
+    volumes:
+      - ./data:/root/.gaia/
+      - ./app.toml:/root/.gaia/config/app.toml
+      - ./config.toml:/root/.gaia/config/config.toml
+
+  gaia:
+    command: start
+    build: .
+    volumes:
+      - ./data:/root/.gaia/
+      - ./app.toml:/root/.gaia/config/app.toml
+      - ./config.toml:/root/.gaia/config/config.toml
