@@ -14,11 +14,11 @@ initNode() {
     echo $KEYPASSWD | gaiad gentx myval 100000000stake --chain-id cosmoshub-4
     
     # Add the gentx to the genesis file.
-    gaiad collect-gentxs
+    gaiad collect-gentxs $@
 }
 
 start() {
-    gaiad start
+    gaiad start $@
 }
 
 case $1 in
