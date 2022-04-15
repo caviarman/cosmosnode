@@ -1,6 +1,6 @@
 FROM golang:1.17 AS builder
 
-RUN git clone -b v6.0.4 https://github.com/cosmos/gaia && cd gaia && make install
+RUN git clone -b v7.0.1 https://github.com/cosmos/gaia && cd gaia && make install
 
 ENV KEYPASSWD=Zydfhm2013
 
